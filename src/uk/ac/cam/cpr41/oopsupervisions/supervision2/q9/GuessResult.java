@@ -1,4 +1,4 @@
-package uk.ac.cam.cpr41.oopsupervisions.supervision2.nine;
+package uk.ac.cam.cpr41.oopsupervisions.supervision2.q9;
 
 public enum GuessResult {
     Correct,

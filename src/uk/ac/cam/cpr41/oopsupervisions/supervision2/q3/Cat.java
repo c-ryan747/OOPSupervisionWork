@@ -1,4 +1,4 @@
-package uk.ac.cam.cpr41.oopsupervisions.supervision2.three;
+package uk.ac.cam.cpr41.oopsupervisions.supervision2.q3;
 
 public class Cat extends Animal {
     @Override

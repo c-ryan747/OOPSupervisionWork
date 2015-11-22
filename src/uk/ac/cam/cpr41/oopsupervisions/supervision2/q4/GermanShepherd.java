@@ -1,6 +1,6 @@
-package uk.ac.cam.cpr41.oopsupervisions.supervision2.four;
+package uk.ac.cam.cpr41.oopsupervisions.supervision2.q4;
 
-import uk.ac.cam.cpr41.oopsupervisions.supervision2.three.Dog;
+import uk.ac.cam.cpr41.oopsupervisions.supervision2.q3.Dog;
 
 public class GermanShepherd extends Dog {
     @Override

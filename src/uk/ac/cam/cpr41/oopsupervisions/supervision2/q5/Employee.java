@@ -1,4 +1,4 @@
-package uk.ac.cam.cpr41.oopsupervisions.supervision2.five;
+package uk.ac.cam.cpr41.oopsupervisions.supervision2.q5;
 
 public class Employee {
     protected int employeeID;

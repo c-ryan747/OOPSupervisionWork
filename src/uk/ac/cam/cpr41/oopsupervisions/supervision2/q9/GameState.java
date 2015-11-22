@@ -1,4 +1,4 @@
-package uk.ac.cam.cpr41.oopsupervisions.supervision2.nine;
+package uk.ac.cam.cpr41.oopsupervisions.supervision2.q9;
 
 import java.util.Random;
 
@@ -34,7 +34,7 @@ public class GameState {
 
     @Override
     public String toString() {
-        return "\nOverall: Number PLayed: " + numPlayed + " Number Won: " + numWon + "\nCurrent: Guesses Left: " + (difficulty - numOfGuessesSoFar) + "\n";
+        return "\nOverall: Number Played: " + numPlayed + " Number Won: " + numWon + "\nCurrent: Guesses Left: " + (difficulty - numOfGuessesSoFar) + "\n";
     }
 
     public String getName() {

@@ -1,4 +1,4 @@
-package uk.ac.cam.cpr41.oopsupervisions.supervision2.nine;
+package uk.ac.cam.cpr41.oopsupervisions.supervision2.q9;
 
 import java.util.Scanner;
 
@@ -17,7 +17,7 @@ public class GameManager {
                 state.setDifficulty(Integer.parseInt(scanner.next()));
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("Invaild difficulty");
+                System.out.println("Invalid difficulty");
             }
         }
 
@@ -44,7 +44,7 @@ public class GameManager {
                     return false;
             }
         } catch (NumberFormatException e) {
-            System.out.print("Invaild guess");
+            System.out.print("Invalid guess");
         }
         return true;
     }
@@ -52,14 +52,10 @@ public class GameManager {
     private static void playRound() {
         while(true) {
             state.reset();
-            while (guess()) continue;
+            while (guess());
             System.out.println("Play again? (Y/N)");
-            String responce = scanner.next();
-            if (responce.equals("Y")) {
-                continue;
-            } else {
-                break;
-            }
+            String response = scanner.next();
+            if (!response.equals("Y")) break;
         }
 
     }
