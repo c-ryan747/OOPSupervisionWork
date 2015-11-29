@@ -1,11 +1,11 @@
 package uk.ac.cam.cpr41.oopsupervisions.supervision3.q11;
 
-public class Pet {
+public abstract class Pet {
     private int currentFood = 10;
     private int currentSleep = 10;
+
     private boolean alive = true;
 
-    // TODO: Constants for rate of loss/gain?
 
     public boolean getAlive() {
         return alive;
@@ -30,8 +30,8 @@ public class Pet {
     }
 
     public void play() {
-        addFood(2);
-        addSleep(2);
+        addFood(foodDecreaseRate());
+        addSleep(sleepDecreaseRate());
     }
 
     public void feed() {
@@ -41,4 +41,8 @@ public class Pet {
     public void sleep() {
         addSleep(5);
     }
+
+    public abstract String name();
+    public abstract int foodDecreaseRate();
+    public abstract int sleepDecreaseRate();
 }

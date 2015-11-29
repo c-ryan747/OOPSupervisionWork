@@ -9,8 +9,8 @@ public class PrintQueue<T> {
     private static volatile PrintQueue instance;
     private PrintQueue() { }
 
-    public static PrintQueue getInstance() {
-        // Not thread safe
+    public static synchronized PrintQueue getInstance() {
+        // Thread safe due to synchronized?
         if (instance == null) {
             instance = new PrintQueue();
         }
