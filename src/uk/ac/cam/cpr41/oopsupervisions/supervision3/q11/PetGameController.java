@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class PetGameController {
     private PetDataStore state;
-    private final PetViewInterface view;
+    private final PetView view;
     private final Scanner scanner = new Scanner(System.in);
     private boolean shouldExit = false;
 

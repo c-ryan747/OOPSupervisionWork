@@ -8,14 +8,16 @@ import java.util.Scanner;
  */
 public abstract class HangManTextualUI implements HangManUI {
     public static String[] stages = {"  +---+   \n  |   |   \n      |   \n      |   \n      |   \n      |   \n========= \n",
-            "  +---+   \n  |   |   \n  0   |   \n      |   \n      |   \n      |   \n========= \n",
-            "  +---+   \n  |   |   \n  0   |   \n  |   |   \n      |   \n      |   \n========= \n",
-            "  +---+   \n  |   |   \n  0   |   \n /|   |   \n      |   \n      |   \n========= \n",
-            "  +---+   \n  |   |   \n  0   |   \n /|\\  |   \n      |   \n      |   \n========= \n",
-            "  +---+   \n  |   |   \n  0   |   \n /|\\  |   \n /    |   \n      |   \n========= \n",
-            "  +---+   \n  |   |   \n  0   |   \n /|\\  |   \n / \\  |   \n      |   \n========= \n"};
-
+                                     "  +---+   \n  |   |   \n  0   |   \n      |   \n      |   \n      |   \n========= \n",
+                                     "  +---+   \n  |   |   \n  0   |   \n  |   |   \n      |   \n      |   \n========= \n",
+                                     "  +---+   \n  |   |   \n  0   |   \n /|   |   \n      |   \n      |   \n========= \n",
+                                     "  +---+   \n  |   |   \n  0   |   \n /|\\  |   \n      |   \n      |   \n========= \n",
+                                     "  +---+   \n  |   |   \n  0   |   \n /|\\  |   \n /    |   \n      |   \n========= \n",
+                                     "  +---+   \n  |   |   \n  0   |   \n /|\\  |   \n / \\  |   \n      |   \n========= \n"};
     public Scanner scanner = new Scanner(System.in);
+
+    public abstract void guessedLetter(char s);
+    public abstract void newGame(boolean b);
 
     public void updateUI(String word, Character[] incorrectGuesses, Character[] correctGuesses, HangManState state) {
         switch (state) {
@@ -30,11 +32,13 @@ public abstract class HangManTextualUI implements HangManUI {
                 break;
             case Win:
                 System.out.println("Conguratulations the word was: " + word);
+
                 askToPlayAgain();
                 break;
             case Loss:
                 System.out.println("Game over :(");
                 System.out.println("The word was: " + word);
+
                 askToPlayAgain();
                 break;
         }
@@ -42,15 +46,12 @@ public abstract class HangManTextualUI implements HangManUI {
 
     private void askToPlayAgain() {
         System.out.println("Play again? (Y/N)");
-        String responce = scanner.next();
-        if (responce.equalsIgnoreCase("Y")) {
+
+        String response = scanner.next();
+        if (response.equalsIgnoreCase("Y")) {
             newGame(true);
         } else {
             newGame(false);
         }
     }
-
-    public abstract void guessedLetter(char s);
-
-    public abstract void newGame(boolean b);
 }

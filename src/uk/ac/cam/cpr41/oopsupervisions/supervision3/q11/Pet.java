@@ -45,4 +45,6 @@ public abstract class Pet {
     public abstract String name();
     public abstract int foodDecreaseRate();
     public abstract int sleepDecreaseRate();
+
+
 }

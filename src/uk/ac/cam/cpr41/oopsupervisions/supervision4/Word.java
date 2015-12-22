@@ -56,6 +56,7 @@ public class Word {
 
     public String hiddenString() {
         String result = "";
+
         for (int i = 0; i < word.length; i++) {
             if (lettersHit[i]) {
                 result += word[i];

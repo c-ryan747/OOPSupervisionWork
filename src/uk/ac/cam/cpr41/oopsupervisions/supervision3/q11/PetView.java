@@ -1,6 +1,6 @@
 package uk.ac.cam.cpr41.oopsupervisions.supervision3.q11;
 
-public abstract class PetViewInterface {
+public abstract class PetView {
     protected PetDataStore data;
 
     public abstract void outputState();

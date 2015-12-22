@@ -1,8 +1,5 @@
 package uk.ac.cam.cpr41.oopsupervisions.supervision3.q3;
 
-/**
- * Created by callum on 26/11/15.
- */
 public class StringTest {
     public static void main(String args[]) {
         String s1 = new String("Hi");

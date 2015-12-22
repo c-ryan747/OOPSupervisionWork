@@ -1,6 +1,6 @@
 package uk.ac.cam.cpr41.oopsupervisions.supervision3.q11;
 
-public class PetTextualView extends PetViewInterface {
+public class PetTextualView extends PetView {
 
     @Override
     public void outputState() {

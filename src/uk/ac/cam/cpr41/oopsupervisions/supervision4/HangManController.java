@@ -14,7 +14,6 @@ public class HangManController {
 
     public HangManController(Path file) {
         wordStore = new WordStore(file);
-
         ui = new HangManTextualUI() {
             @Override
             public void guessedLetter(char s) {
@@ -31,6 +30,7 @@ public class HangManController {
                 }
             }
         };
+
         startNewGame();
     }
 
@@ -40,7 +40,6 @@ public class HangManController {
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-
     }
 
     public void startNewGame() {
