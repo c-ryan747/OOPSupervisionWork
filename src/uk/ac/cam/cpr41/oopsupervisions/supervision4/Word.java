@@ -5,16 +5,20 @@ import java.util.TreeSet;
 
 /**
  * Created by Callum Ryan on 22/12/15.
+ *
+ * Data structure to store a word, and the characters of it that have been guessed
  */
 
 public class Word {
     private char[] word;
-    private boolean[] lettersHit;
-    private Set<Character> incorrectLetters;
-    private Set<Character> successfulLetters;
+    private boolean[] lettersHit;               // True if letter at index correctly guessed
+    private Set<Character> incorrectLetters;    // Set of correct guesses
+    private Set<Character> successfulLetters;   // Set of incorrect guesses
 
     public Word(String w) {
         word = w.toCharArray();
+
+        // Setup
         lettersHit = new boolean[word.length];
         incorrectLetters = new TreeSet<>();
         successfulLetters = new TreeSet<>();
@@ -29,6 +33,7 @@ public class Word {
     }
 
     public boolean wordComplete() {
+        // If any letter isn't hit return false
         for (boolean b : lettersHit) {
             if (!b) return false;
         }
@@ -38,6 +43,9 @@ public class Word {
 
     public void guessLetter(char l) {
         boolean letterCorrect = false;
+
+        // Mark all occurrences of that letter as hit
+        // And add to successfulLetters
         for (int i = 0; i < word.length; i++) {
             if (l == word[i]) {
                 lettersHit[i] = true;
@@ -46,14 +54,17 @@ public class Word {
             }
         }
 
+        // Else add to incorrectLetters
         if (!letterCorrect) incorrectLetters.add(l);
     }
 
+    // Return full word
     @Override
     public String toString() {
         return String.valueOf(word);
     }
 
+    // Return word with un-guessed characters hidden (as underscores)
     public String hiddenString() {
         String result = "";
 

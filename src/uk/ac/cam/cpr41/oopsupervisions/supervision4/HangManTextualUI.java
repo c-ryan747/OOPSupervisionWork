@@ -5,17 +5,23 @@ import java.util.Scanner;
 
 /**
  * Created by Callum Ryan on 22/12/15.
+ *
+ * Provides a textual UI for a game on hang man in the console
  */
+
 public abstract class HangManTextualUI implements HangManUI {
-    public static String[] stages = {"  +---+   \n  |   |   \n      |   \n      |   \n      |   \n      |   \n========= \n",
+    // Ascii art ftw
+    private final static String[] stages = {"  +---+   \n  |   |   \n      |   \n      |   \n      |   \n      |   \n========= \n",
                                      "  +---+   \n  |   |   \n  0   |   \n      |   \n      |   \n      |   \n========= \n",
                                      "  +---+   \n  |   |   \n  0   |   \n  |   |   \n      |   \n      |   \n========= \n",
                                      "  +---+   \n  |   |   \n  0   |   \n /|   |   \n      |   \n      |   \n========= \n",
                                      "  +---+   \n  |   |   \n  0   |   \n /|\\  |   \n      |   \n      |   \n========= \n",
                                      "  +---+   \n  |   |   \n  0   |   \n /|\\  |   \n /    |   \n      |   \n========= \n",
                                      "  +---+   \n  |   |   \n  0   |   \n /|\\  |   \n / \\  |   \n      |   \n========= \n"};
-    public Scanner scanner = new Scanner(System.in);
 
+    private final Scanner scanner = new Scanner(System.in);
+
+    // To be filled in by controller (or subclass)
     public abstract void guessedLetter(char s);
     public abstract void newGame(boolean b);
 
@@ -23,15 +29,17 @@ public abstract class HangManTextualUI implements HangManUI {
         switch (state) {
             case Guessing:
                 System.out.println(stages[incorrectGuesses.length]);
+
                 System.out.println("Word: " + word);
                 System.out.println("Letter Guessed incorrectly: " + Arrays.toString(incorrectGuesses));
                 System.out.println("Letter Guessed correctly  : " + Arrays.toString(correctGuesses));
                 System.out.println("Guess a letter: ");
 
+                // Take the next character inputted to the console
                 guessedLetter(scanner.next().charAt(0));
                 break;
             case Win:
-                System.out.println("Conguratulations the word was: " + word);
+                System.out.println("Congratulations the word was: " + word);
 
                 askToPlayAgain();
                 break;
