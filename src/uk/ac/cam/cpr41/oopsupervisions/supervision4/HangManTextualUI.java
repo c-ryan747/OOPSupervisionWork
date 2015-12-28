@@ -25,31 +25,32 @@ public abstract class HangManTextualUI implements HangManUI {
     public abstract void guessedLetter(char s);
     public abstract void newGame(boolean b);
 
-    public void updateUI(String word, Character[] incorrectGuesses, Character[] correctGuesses, HangManState state) {
-        switch (state) {
-            case Guessing:
-                System.out.println(stages[incorrectGuesses.length]);
+    @Override
+    public void displayGuess(String word, Character[] incorrectGuesses, Character[] correctGuesses) {
+        System.out.println(stages[incorrectGuesses.length]);
 
-                System.out.println("Word: " + word);
-                System.out.println("Letter Guessed incorrectly: " + Arrays.toString(incorrectGuesses));
-                System.out.println("Letter Guessed correctly  : " + Arrays.toString(correctGuesses));
-                System.out.println("Guess a letter: ");
+        System.out.println("Word: " + word);
+        System.out.println("Letter Guessed incorrectly: " + Arrays.toString(incorrectGuesses));
+        System.out.println("Letter Guessed correctly  : " + Arrays.toString(correctGuesses));
+        System.out.println("Guess a letter: ");
 
-                // Take the next character inputted to the console
-                guessedLetter(scanner.next().charAt(0));
-                break;
-            case Win:
-                System.out.println("Congratulations the word was: " + word);
+        // Take the next character inputted to the console
+        guessedLetter(scanner.next().charAt(0));
+    }
 
-                askToPlayAgain();
-                break;
-            case Loss:
-                System.out.println("Game over :(");
-                System.out.println("The word was: " + word);
+    @Override
+    public void displayWin(String word, Character[] incorrectGuesses, Character[] correctGuesses) {
+        System.out.println("Congratulations the word was: " + word);
 
-                askToPlayAgain();
-                break;
-        }
+        askToPlayAgain();
+    }
+
+    @Override
+    public void displayLoss(String word, Character[] incorrectGuesses, Character[] correctGuesses) {
+        System.out.println("Game over :(");
+        System.out.println("The word was: " + word);
+
+        askToPlayAgain();
     }
 
     private void askToPlayAgain() {

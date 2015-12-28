@@ -8,7 +8,9 @@ package uk.ac.cam.cpr41.oopsupervisions.supervision4;
 
 public interface HangManUI {
     // Output game state to the user and prompt for a response
-    void updateUI(String word, Character[] incorrectGuesses, Character[] correctGuesses, HangManState state);
+    void displayLoss    (String word, Character[] incorrectGuesses, Character[] correctGuesses);
+    void displayWin     (String word, Character[] incorrectGuesses, Character[] correctGuesses);
+    void displayGuess   (String word, Character[] incorrectGuesses, Character[] correctGuesses);
 
     // Methods to handle interaction
     // Filled in by controller (or subclass)

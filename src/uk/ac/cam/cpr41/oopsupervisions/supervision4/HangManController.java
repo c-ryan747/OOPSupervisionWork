@@ -14,6 +14,7 @@ public class HangManController {
     private HangManWordStore wordStore;
     private Word wordToGuess;
     private HangManUI ui;
+    private HangManState state;
 
     private final int numOfStages = 6;
 
@@ -25,7 +26,6 @@ public class HangManController {
             @Override
             public void guessedLetter(char s) {
                 wordToGuess.guessLetter(s);
-                guess();
             }
 
             @Override
@@ -40,21 +40,32 @@ public class HangManController {
     public void startNewGame() {
         // Generate a new word
         wordToGuess = wordStore.getNewWord();
+        state = HangManState.Guessing;
 
-        guess();
+        while (state.equals(HangManState.Guessing)) {
+            if (wordToGuess.getIncorrectLetters().length == numOfStages) {
+                // Game over
+                state = HangManState.Loss;
+            } else if (wordToGuess.wordComplete()) {
+                // Game won
+                state = HangManState.Win;
+            }
+            guess();
+        }
     }
 
     // Decide on the game state and update the UI accordingly
     private void guess() {
-        if (wordToGuess.getIncorrectLetters().length == numOfStages) {
-            // Game over
-            ui.updateUI(wordToGuess.toString(),     wordToGuess.getIncorrectLetters(), wordToGuess.getSuccessfulLetters(), HangManState.Loss);
-        } else if (wordToGuess.wordComplete()) {
-            // Game won
-            ui.updateUI(wordToGuess.hiddenString(), wordToGuess.getIncorrectLetters(), wordToGuess.getSuccessfulLetters(), HangManState.Win);
-        } else {
-            // Game in progress
-            ui.updateUI(wordToGuess.hiddenString(), wordToGuess.getIncorrectLetters(), wordToGuess.getSuccessfulLetters(), HangManState.Guessing);
+        switch (state) {
+            case Loss:
+                ui.displayLoss(wordToGuess.toString(),     wordToGuess.getIncorrectLetters(), wordToGuess.getSuccessfulLetters());
+                break;
+            case Win:
+                ui.displayWin(wordToGuess.hiddenString(), wordToGuess.getIncorrectLetters(), wordToGuess.getSuccessfulLetters());
+                break;
+            case Guessing:
+                ui.displayGuess(wordToGuess.hiddenString(), wordToGuess.getIncorrectLetters(), wordToGuess.getSuccessfulLetters());
+                break;
         }
     }
 
